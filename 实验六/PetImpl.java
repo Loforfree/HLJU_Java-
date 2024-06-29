@@ -26,7 +26,7 @@ public abstract class PetImpl implements Pet {
     public boolean equals(Object obj) {
         if(obj instanceof PetImpl){
             PetImpl pet = (PetImpl)obj;
-            if(pet.getName().equals(getName())&&pet.getAge()==getAge()){
+            if(pet.getName().equals(getName())&&pet.getAge()==getAge()) {
                 return true;
             }
         }

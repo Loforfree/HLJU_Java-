@@ -23,8 +23,7 @@ public class MV {
             s = cmd;
         }
     }
-    public void excute(){
-        try{
+    public void excute() throws IOException,FileNotFoundException{
             s=s.replace("mv","");
             s=s.trim();
             temp=s.split(" ");
@@ -37,8 +36,7 @@ public class MV {
             //文件本身，用来判断是否存在
             File f = new File(Cpath);
             if(!f.exists()){
-                System.out.println(Cpath+"文件不存在");
-                return;
+                throw new NullPointerException(Cpath+"文件不存在");
             }
             //文件的内容，用来复制粘贴
             FileInputStream fi = new FileInputStream(Cpath);
@@ -69,12 +67,5 @@ public class MV {
                     return;
                 }
             }
-        }
-        catch (FileNotFoundException e){
-            System.out.println(Cpath+"不是有效文件");
-        }
-        catch (IOException e){
-            System.out.println(e);
-        }
     }
 }

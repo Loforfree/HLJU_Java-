@@ -4,9 +4,6 @@ import java.io.File;
 
 public class RD {
     private String s;
-    private String path;
-    private String temp[];
-    private String choose;
     RD(){
         s="";
     }
@@ -18,8 +15,11 @@ public class RD {
             s = cmd;
         }
     }
-    public void excute(){
-        try{
+
+    String path;
+    String temp[];
+    String choose;
+    public void excute() throws NullPointerException{
             s=s.replace("rd","");
             temp=s.split(" ");
             if(temp.length!=2){
@@ -30,19 +30,16 @@ public class RD {
             //文件本身，用来判断是否存在
             File f = new File(path);
             if(!f.exists()){
-                System.out.println(path+"文件不存在");
-                return;
+                throw new NullPointerException("文件不存在");
             }
             if(f.isDirectory()){
                 File[] lists=f.listFiles();
                 if(lists.length>0){
-                    System.out.println("目录不为空");
-                    return;
+                    throw new NullPointerException("目录不能为空");
                 }
             }
             else{
-                System.out.println("不是有效文件");
-                return;
+                throw new NullPointerException("不是有效文件");
             }
             //byteslengths是读取到的字符数
             System.out.println("删除"+path+"吗(Y/N)");
@@ -62,9 +59,5 @@ public class RD {
                     return;
                 }
             }
-        }
-        catch (NullPointerException e){
-            System.out.println("找不到文件");
-        }
     }
 }
