@@ -10,14 +10,12 @@ public class Matrix {
         }
         data = new double[row][col];
     }
-    public Matrix(double[][] data){
-        if(data==null){
+    public Matrix(double[][] data) {
+        if (data == null) {
             System.out.println("参数不能为空");
-            }
-        else{
-            this.data =data;
+        } else {
+            this.data = data;
         }
-
     }
     public int getRows(){
         return data.length;
